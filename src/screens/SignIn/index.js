@@ -11,7 +11,7 @@ const SignIn = (props) => {
     e.preventDefault();
     signIn({ email: 'mohamedschof@gmail.com', password: '123456' })
   };
-
+  
   return (
     <div className="container h-100 pt-5">
       <h1>Sign In</h1>
