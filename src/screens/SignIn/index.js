@@ -2,16 +2,15 @@ import React from "react";
 import { Link , Redirect} from "react-router-dom";
 import { connect } from "react-redux";
 import { signIn } from "../../actions/AccountActions";
+import { getFormData } from "../../helpers/form";
+
 
 const SignIn = (props) => {
   const { signIn, account } = props;
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-
+    const data = getFormData(e);
     signIn(data);
   };
   if (account) {
@@ -26,7 +25,7 @@ const SignIn = (props) => {
             <label>Email</label>
             <input type="text" className="form-control" name="email"></input>
           </div>
-          <div className="fprm-group">
+          <div className="form-group">
             <label>Password</label>
             <input
               type="password"
