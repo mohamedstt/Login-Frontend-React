@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const FormCheck = (props) => {
-  const { data, name, label} = props;
+  const { data, name, label } = props;
   const [isChecked, setIsChecked] = useState(null);
 
   useEffect(() => {
@@ -15,13 +15,12 @@ const FormCheck = (props) => {
   };
 
   const inputProps = {
-    type: 'checkbox',
+    type: "checkbox",
     name,
     checked: !!isChecked,
     onChange: handleChange,
   };
-
-  console.log("**** FormCheck.inputProps", inputProps);
+  
   return (
     <div className="form-group form-check">
       <label className="form-check-label">
