@@ -40,3 +40,12 @@ export const apiGet = (path) => {
 
   return axios.get(url, options);
 };
+
+export const apiDelete = (path, data = {}) => {
+  const url = getApiUrl(path);
+  const options = {
+    headers: getHeaders(),
+  };
+
+  return axios.delete(url, options);
+}
