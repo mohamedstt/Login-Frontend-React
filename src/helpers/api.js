@@ -1,17 +1,25 @@
 import axios from "axios";
 import { getToken } from "./account";
-
+import { secondsToReadableTime } from "./dateTime";
+import { getTokenExpires } from "./jwt";
 export const getApiUrl = (path) => {
   return `http://localhost:3001${path}`;
 };
 
 export const getHeaders = () => {
   const token = getToken();
+  
   if (!token) return {};
 
+  const expires = getTokenExpires(token);
+  const secondsToExpires = expires - Date.now() / 1000;
+  const readableTime = secondsToReadableTime(secondsToExpires);
+
+  console.log("*** getHeaders.readableTime", readableTime);
+
   return {
-    Authorization: `Bearer ${token}`
-  }
+    Authorization: `Bearer ${token}`,
+  };
 };
 
 export const apiPost = (path, data = {}) => {
@@ -48,4 +56,4 @@ export const apiDelete = (path, data = {}) => {
   };
 
   return axios.delete(url, options);
-}
+};
