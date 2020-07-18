@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import { Provider } from 'react-redux'
 
-
 import store from './store'
+
+import App from './App';
+import TokenRefresher from './components/TokenRefresher';
 
 import './style/main.scss';
 
@@ -12,6 +13,7 @@ import './style/main.scss';
 
 ReactDOM.render(
   <Provider store={store}>
+    <TokenRefresher />
     <App />
   </Provider>,
   document.getElementById('root'),
